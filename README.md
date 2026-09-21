@@ -65,7 +65,7 @@ HYDRA_FULL_ERROR=1 PYTHONPATH=. uv run python3 -m topreward.scripts.predict \
 HYDRA_FULL_ERROR=1 PYTHONPATH=. uv run python3 -m topreward.scripts.predict \
   --config-dir configs/experiments \
   --config-name predict_topreward \
-  model=qwen
+  model=gemma4
 ```
 
 ### Single Runner Script
@@ -74,7 +74,7 @@ If you prefer one shell entrypoint, use:
 
 ```bash
 topreward/scripts/run_predict.sh --config-name predict_gvl dataset=nyudoor model=gemini
-topreward/scripts/run_predict.sh --config-name predict_topreward dataset=austin_sirius_dataset model=qwen prediction.add_chat_template=true
+topreward/scripts/run_predict.sh --config-name predict_topreward dataset=austin_sirius_dataset model=gemma4 prediction.add_chat_template=true
 ```
 
 The script selects an experiment config by name and forwards all remaining arguments as Hydra overrides.
