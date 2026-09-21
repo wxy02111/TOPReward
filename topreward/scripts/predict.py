@@ -219,6 +219,8 @@ def main(config: DictConfig) -> None:
     # Build summary based on method
     summary = {}
     summary["model_name"] = client.model_name
+    if hasattr(client, "source_model_name"):
+        summary["source_model_name"] = client.source_model_name
     summary["dataset_name"] = config.dataset.name
     summary["num_context_episodes"] = config.dataset.num_context_episodes
     summary["prediction_time"] = starting_time

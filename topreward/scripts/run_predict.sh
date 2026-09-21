@@ -8,7 +8,7 @@ Usage:
 
 Examples:
   topreward/scripts/run_predict.sh --config-name predict_gvl dataset=nyudoor model=gemini
-  topreward/scripts/run_predict.sh --config-name predict_topreward dataset=austin_sirius_dataset model=qwen prediction.add_chat_template=true
+  topreward/scripts/run_predict.sh --config-name predict_topreward dataset=austin_sirius_dataset model=gemma4 prediction.add_chat_template=true
 
 Common Hydra override types:
   Group selection:
@@ -24,6 +24,7 @@ Notes:
   - --config-name should match a config in configs/experiments (without .yaml).
   - All non-wrapper arguments are passed directly to Hydra.
   - Use native Hydra overrides instead of shell-specific flags.
+  - model=gemma4 uses Qwen weights with the local display alias gemma4.
 USAGE
 }
 

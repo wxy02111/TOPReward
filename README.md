@@ -68,6 +68,14 @@ HYDRA_FULL_ERROR=1 PYTHONPATH=. uv run python3 -m topreward.scripts.predict \
   model=gemma4
 ```
 
+`model=gemma4` is a local display alias for `Qwen/Qwen3-VL-8B-Instruct`.
+It downloads and loads the original Qwen model and processor, then uses `gemma4`
+in prediction filenames and model-name fields. The summary also records
+`source_model_name` with the actual checkpoint identifier. The Hugging Face cache,
+architecture, tokenizer, and weights are unchanged. Use `model=qwen` for the
+original name, or `model.display_name=another_alias` with the `gemma4` config to
+choose a different display name.
+
 ### Single Runner Script
 
 If you prefer one shell entrypoint, use:

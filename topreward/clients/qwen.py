@@ -21,12 +21,16 @@ class QwenClient(BaseModelClient):
         model_name: str = "Qwen/Qwen3-VL-8B-Instruct",
         rpm: float = 0.0,
         max_input_length: int = 32768,
+        display_name: str | None = None,
     ):
         super().__init__(rpm=rpm)
         self.model = Qwen3VLForConditionalGeneration.from_pretrained(model_name, torch_dtype="auto", device_map="auto", attn_implementation="flash_attention_2")
         self.processor = AutoProcessor.from_pretrained(model_name, trust_remote_code=True)
         logger.info(type(self.processor))
-        self.model_name = model_name
+        # Keep the checkpoint identifier separate from the name used in results.
+        self.source_model_name = model_name
+        self.model_name = display_name or model_name
+        logger.info("Loaded model {} (weights: {})", self.model_name, self.source_model_name)
         self.max_input_length = max_input_length
 
     def _generate_from_events(self, events: list[Event], temperature: float) -> str:

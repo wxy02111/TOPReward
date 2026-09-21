@@ -1,0 +1,5 @@
+# Local display alias; architecture, processor and weights remain Qwen.
+_target_: topreward.clients.qwen.QwenClient
+model_name: Qwen/Qwen3-VL-8B-Instruct
+display_name: gemma4
+max_input_length: 32000
